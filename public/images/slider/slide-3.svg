@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 900" width="1920" height="900" role="img" aria-label="Care with Confidence">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/><stop offset="1" stop-color="#0f1d3d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.18" cy="0.2" r="0.9">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="900" fill="url(#g)"/>
+  <rect width="1920" height="900" fill="url(#glow)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="5.4">
+    <circle cx="1497.6000000000001" cy="252.00000000000003" r="234"/>
+    <circle cx="1689.6" cy="684" r="126.00000000000001"/>
+    <circle cx="345.59999999999997" cy="720" r="162"/>
+    <path d="M0 756 Q 576 630 1056 774 T 1920 684"/>
+  </g>
+  <text x="960" y="522" text-anchor="middle" font-family="'Noto Sans', sans-serif" font-size="270" fill="#ffffff" fill-opacity="0.16">✚</text>
+</svg>
