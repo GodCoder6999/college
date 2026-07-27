@@ -171,6 +171,10 @@
   }
   html {
     @apply font-sans;
+    /* Decorative elements (section curves, offset collage rings) deliberately
+       sit outside their section bounds. `clip` stops that widening the document
+       without creating a scroll container, so `position: sticky` still works. */
+    overflow-x: clip;
   }
   a {
     color: inherit;

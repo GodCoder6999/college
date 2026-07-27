@@ -1,6 +1,6 @@
 export function AboutSection() {
   return (
-    <section className="msc-section-padding max-[575px]:py-[32px]">
+    <section className="msc-section-padding overflow-x-clip max-[575px]:py-[32px]">
       <div className="msc-container">
         <div className="flex flex-wrap min-[992px]:flex-nowrap">
           <div className="w-full min-[992px]:w-[41.667%] mb-[50px] min-[992px]:mb-0 flex flex-col justify-center">

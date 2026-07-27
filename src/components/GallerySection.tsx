@@ -31,7 +31,7 @@ export function GallerySection() {
   const { ref, shown } = useReveal<HTMLDivElement>();
 
   return (
-    <section className="msc-section-padding relative bg-[#fafafb]">
+    <section className="msc-section-padding relative overflow-x-clip bg-[#fafafb]">
       <div className="msc-container relative z-[1]">
         <div className="mb-[20px] flex flex-wrap items-center">
           <div className="w-full min-[992px]:w-[41.667%]">
