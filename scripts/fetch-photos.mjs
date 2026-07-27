@@ -4,30 +4,71 @@
 // drop your own (AI-generated or licensed) images over them later by filename
 // and no component code needs to change.
 //
-// Selection is deliberately strict: a result is only accepted if its title or
-// tags actually mention the subject. Openverse leans heavily on museum and
-// archive collections, so a bare relevance search happily returns a dingo for
+// Selection is deliberately strict: a result is only accepted if its title
+// actually mentions the subject. Openverse leans heavily on museum and archive
+// collections, so a bare relevance search happily returns a dingo for
 // "graduation students diploma".
 //
-// REQUIRES AN API KEY. Openverse now returns 401 for anonymous requests, so
-// register a client at https://api.openverse.org/v1/auth_tokens/register/ and
-// export OPENVERSE_TOKEN before running. Without it every search 401s and the
-// script writes nothing.
+// AUTHENTICATION — Openverse returns 401 for anonymous requests. Register once:
 //
-// Usage: OPENVERSE_TOKEN=xxx node scripts/fetch-photos.mjs
+//   curl -X POST https://api.openverse.org/v1/auth_tokens/register/ //     -H "Content-Type: application/json" //     -d '{"name":"muktir-siksha-site","description":"college website images","email":"you@example.com"}'
+//
+// That responds with client_id and client_secret. Pass them in and this script
+// exchanges them for an access token itself:
+//
+//   OPENVERSE_CLIENT_ID=xxx OPENVERSE_CLIENT_SECRET=yyy node scripts/fetch-photos.mjs
+//
+// Or pass a token you already minted:
+//
+//   OPENVERSE_TOKEN=zzz node scripts/fetch-photos.mjs
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 
 const API = 'https://api.openverse.org/v1/images/';
-const TOKEN = process.env.OPENVERSE_TOKEN;
+const TOKEN_URL = 'https://api.openverse.org/v1/auth_tokens/token/';
+
+const CLIENT_ID = process.env.OPENVERSE_CLIENT_ID;
+const CLIENT_SECRET = process.env.OPENVERSE_CLIENT_SECRET;
+
+/** Exchange client credentials for a bearer token. */
+async function mintToken() {
+  const body = new URLSearchParams({
+    grant_type: 'client_credentials',
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
+  });
+  const res = await fetch(TOKEN_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body,
+  });
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok || !json.access_token) {
+    throw new Error(`token exchange failed (${res.status}): ${JSON.stringify(json)}`);
+  }
+  return json.access_token;
+}
+
+let token = process.env.OPENVERSE_TOKEN;
+if (!token) {
+  if (!CLIENT_ID || !CLIENT_SECRET) {
+    console.error(
+      [
+        'Missing credentials.',
+        'Set OPENVERSE_CLIENT_ID + OPENVERSE_CLIENT_SECRET (or OPENVERSE_TOKEN).',
+        'Register at: https://api.openverse.org/v1/auth_tokens/register/',
+      ].join('\n'),
+    );
+    process.exit(1);
+  }
+  token = await mintToken();
+  console.log('  token minted from client credentials');
+}
+
 const UA = {
   'User-Agent': 'muktir-siksha-site/1.0',
-  ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
+  Authorization: `Bearer ${token}`,
 };
-if (!TOKEN) {
-  console.error('OPENVERSE_TOKEN is not set — Openverse rejects anonymous requests with 401.');
-  process.exit(1);
-}
 
 /**
  * Each slot lists several queries (tried in order) and the keywords that must
@@ -36,12 +77,12 @@ if (!TOKEN) {
 const SLOTS = [
   {
     out: 'images/slider/slide-1.jpg', minW: 1000,
-    queries: ['pharmacy interior', 'drugstore pharmacy', 'apothecary shop'],
+    queries: ['pharmacy pills medicine', 'medicine tablets pharmacy', 'pharmacy shelf medicines'],
     must: ['pharmacy', 'pharmacist', 'drugstore', 'apothecary', 'chemist'],
   },
   {
     out: 'images/slider/slide-2.jpg', minW: 1000,
-    queries: ['chemistry laboratory', 'science laboratory', 'laboratory glassware'],
+    queries: ['laboratory glassware science', 'science lab equipment', 'chemistry beaker lab'],
     must: ['laboratory', 'lab', 'chemistry', 'chemical', 'flask', 'beaker'],
   },
   {
@@ -51,7 +92,7 @@ const SLOTS = [
   },
   {
     out: 'images/slider/slide-4.jpg', minW: 1000,
-    queries: ['university campus building', 'college building', 'school building exterior'],
+    queries: ['students studying together', 'students group study', 'young people studying'],
     must: ['university', 'college', 'campus', 'school', 'building'],
   },
 
@@ -83,7 +124,7 @@ const SLOTS = [
   },
   {
     out: 'images/blog/lab-skills.jpg', minW: 900,
-    queries: ['students laboratory experiment', 'chemistry students', 'laboratory training'],
+    queries: ['laboratory pipette science', 'lab experiment science', 'research lab work'],
     must: ['laboratory', 'lab', 'chemistry', 'students', 'experiment'],
   },
   {
@@ -110,7 +151,7 @@ const SLOTS = [
 
   {
     out: 'images/background/testimonials.jpg', minW: 1200,
-    queries: ['pharmacy shelves bottles', 'apothecary bottles', 'medicine bottles pharmacy'],
+    queries: ['medicine pills tablets', 'pharmacy medicine shelf', 'medical supplies'],
     must: ['pharmacy', 'apothecary', 'bottles', 'medicine', 'drugstore'],
   },
 ];
@@ -118,16 +159,30 @@ const SLOTS = [
 const usedIds = new Set();
 
 async function search(q) {
-  const url = `${API}?q=${encodeURIComponent(q)}&license=cc0,pdm&page_size=40&mature=false`;
+  const url = `${API}?q=${encodeURIComponent(q)}&license=cc0,pdm&source=flickr&page_size=40&mature=false`;
   const res = await fetch(url, { headers: UA });
   if (!res.ok) throw new Error(`search ${res.status}`);
   return (await res.json()).results ?? [];
 }
 
+// Artwork rather than photography, or a named institution we must not imply
+// an association with.
+const BAD_WORDS = [
+  'watercolour', 'watercolor', 'woodcut', 'engraving', 'etching', 'lithograph',
+  'drawing', 'painting', 'illustration', 'sketch', 'cartoon', 'poster',
+  'century', 'antique', 'vintage', 'rutgers', 'harvard', 'yale', 'oxford',
+  'cambridge', 'stanford', 'university of', 'museum', 'archive',
+  'ubc', 'mit', 'nasa', 'consular', 'navy', 'army',
+];
+
 function relevant(r, must) {
   // Openverse returns empty `tags` for anonymous clients, so the title is the
   // only signal available. It is still a far better gate than raw relevance.
   const hay = `${r.title ?? ''} ${(r.tags ?? []).map((t) => t.name).join(' ')}`.toLowerCase();
+  if (BAD_WORDS.some((w) => hay.includes(w))) return false;
+  // Public-domain photography is largely public domain *because* it is old.
+  // A year in the title is a reliable tell for archival material.
+  if (/1[6-9]\d{2}/.test(hay)) return false;
   return must.some((k) => hay.includes(k));
 }
 
@@ -137,6 +192,7 @@ function acceptable(r, slot) {
   if (r.width < slot.minW) return false;
   const ratio = r.width / r.height;
   if (slot.portrait && ratio > 1.4) return false;
+  if (!slot.portrait && (ratio > 2.2 || ratio < 1.05)) return false;
   if (!/\.(jpe?g|png)$/i.test(new URL(r.url).pathname)) return false;
   return relevant(r, slot.must);
 }
@@ -161,7 +217,13 @@ for (const slot of SLOTS) {
     try {
       results = await search(q);
     } catch (err) {
-      console.log('  warn', slot.out, `query "${q}" failed:`, String(err.message ?? err));
+      const msg = String(err.message ?? err);
+      if (msg.includes('401') || msg.includes('403')) {
+        console.error(`
+Auth rejected (${msg}). Token invalid or expired — re-register.`);
+        process.exit(1);
+      }
+      console.log('  warn', slot.out, `query "${q}" failed:`, msg);
       continue;
     }
     for (const hit of results) {

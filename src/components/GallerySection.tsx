@@ -6,22 +6,22 @@ import type { GalleryTile } from "@/types/site";
 
 const GALLERY_TILES: GalleryTile[] = [
   {
-    image: "/images/gallery/classroom.svg",
+    image: "/images/gallery/classroom.jpg",
     title: "Classroom",
     href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/",
   },
   {
-    image: "/images/gallery/laboratory.svg",
+    image: "/images/gallery/laboratory.jpg",
     title: "Laboratory",
     href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/",
   },
   {
-    image: "/images/gallery/library.svg",
+    image: "/images/gallery/library.jpg",
     title: "Library",
     href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/",
   },
   {
-    image: "/images/gallery/campus-life.svg",
+    image: "/images/gallery/campus-life.jpg",
     title: "Campus Life",
     href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/",
   },

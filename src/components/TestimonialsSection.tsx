@@ -5,19 +5,19 @@ import type { Testimonial } from "@/types/site";
 
 const TESTIMONIALS: Testimonial[] = [
   {
-    avatar: "/images/testimonials/student-1.svg",
+    avatar: "/images/testimonials/student-1.jpg",
     name: "Sagarika Mondal",
     quote:
       "The D.Pharm programme here gave me a strong foundation in pharmaceutical sciences. The practical sessions in the laboratory made dispensing and formulation feel natural long before I stepped into a real pharmacy.",
   },
   {
-    avatar: "/images/testimonials/student-2.svg",
+    avatar: "/images/testimonials/student-2.jpg",
     name: "Arindam Roy",
     quote:
       "What I value most is how much emphasis the faculty place on ethics and accuracy. That focus on responsibility is exactly what employers look for, and it made my first hospital placement far easier.",
   },
   {
-    avatar: "/images/testimonials/student-3.svg",
+    avatar: "/images/testimonials/student-3.jpg",
     name: "Puja Das",
     quote:
       "Expert guidance, a supportive learning environment, and a course that keeps industry standards in view — Muktir Siksha College prepared me for a career in community pharmacy with real confidence.",

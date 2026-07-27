@@ -5,7 +5,7 @@ import type { HeroSlide } from "@/types/site";
 
 const SLIDES: HeroSlide[] = [
   {
-    image: "/images/slider/slide-1.svg",
+    image: "/images/slider/slide-1.jpg",
     title: "Empowering the Next Generation of",
     titleAccent: " Pharmacists",
     description:
@@ -16,7 +16,7 @@ const SLIDES: HeroSlide[] = [
     ],
   },
   {
-    image: "/images/slider/slide-2.svg",
+    image: "/images/slider/slide-2.jpg",
     title: "Diploma in Pharmacy",
     titleAccent: " (D.Pharm)",
     description:
@@ -27,7 +27,7 @@ const SLIDES: HeroSlide[] = [
     ],
   },
   {
-    image: "/images/slider/slide-4.svg",
+    image: "/images/slider/slide-4.jpg",
     title: "A Campus That Inspires",
     titleAccent: " Learning",
     description:
@@ -38,7 +38,7 @@ const SLIDES: HeroSlide[] = [
     ],
   },
   {
-    image: "/images/slider/slide-3.svg",
+    image: "/images/slider/slide-3.jpg",
     title: "Shaping the Future of",
     titleAccent: " Pharmacy Education",
     description:

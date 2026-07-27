@@ -2,7 +2,7 @@ import type { BlogPost } from "@/types/site";
 
 const BLOG_POSTS: BlogPost[] = [
   {
-    image: "/images/blog/why-dpharm.svg",
+    image: "/images/blog/why-dpharm.jpg",
     tag: "Course",
     date: "12 Jan 2026",
     title: "Reasons to Pursue a Diploma in Pharmacy",
@@ -11,7 +11,7 @@ const BLOG_POSTS: BlogPost[] = [
     href: "https://muktirshikshacollegeofeducationandpharmacy.org/course/",
   },
   {
-    image: "/images/blog/lab-skills.svg",
+    image: "/images/blog/lab-skills.jpg",
     tag: "Learning",
     date: "05 Jan 2026",
     title: "Practical Training That Prepares You for Real Work",
@@ -20,7 +20,7 @@ const BLOG_POSTS: BlogPost[] = [
     href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/",
   },
   {
-    image: "/images/blog/admission-guide.svg",
+    image: "/images/blog/admission-guide.jpg",
     tag: "Admission",
     date: "02 Jan 2026",
     title: "How to Apply for the Diploma in Pharmacy",
