@@ -65,7 +65,6 @@ export function HeroSlider() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const goTo = (index: number) => {
@@ -138,21 +137,40 @@ export function HeroSlider() {
         );
       })}
 
-      <div
+      {/* Edge arrows — circular, translucent, vertically centred */}
+      <button
+        type="button"
         onClick={goPrev}
-        className="absolute z-10 left-[40px] bottom-[40px] flex h-[48px] w-[48px] cursor-pointer items-center justify-center rounded-full border border-white/35 text-white transition-[0.4s] hover:bg-white/15"
+        aria-label="Previous slide"
+        className="absolute top-1/2 left-[24px] z-10 flex h-[56px] w-[56px] -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/35 text-[20px] text-white transition-colors duration-200 hover:bg-black/60 max-[575px]:h-[36px] max-[575px]:w-[36px] max-[575px]:left-[10px] max-[575px]:text-[14px]"
       >
         <i className="fas fa-chevron-left" />
-      </div>
-      <div
+      </button>
+      <button
+        type="button"
         onClick={goNext}
-        className="absolute z-10 left-[100px] bottom-[40px] flex h-[48px] w-[48px] cursor-pointer items-center justify-center rounded-full border border-white/35 text-white transition-[0.4s] hover:bg-white/15"
+        aria-label="Next slide"
+        className="absolute top-1/2 right-[24px] z-10 flex h-[56px] w-[56px] -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/35 text-[20px] text-white transition-colors duration-200 hover:bg-black/60 max-[575px]:h-[36px] max-[575px]:w-[36px] max-[575px]:right-[10px] max-[575px]:text-[14px]"
       >
         <i className="fas fa-chevron-right" />
-      </div>
+      </button>
 
-      <div className="absolute z-10 right-[40px] bottom-[200px] text-center text-[40px] leading-[60px] font-medium text-white">
-        {activeIndex + 1} / {SLIDES.length}
+      {/* Slide indicators — active slide is a wider pill, the rest are dots */}
+      <div className="absolute bottom-[40px] left-1/2 z-10 flex -translate-x-1/2 items-center gap-[8px] max-[575px]:bottom-[16px]">
+        {SLIDES.map((slide, index) => (
+          <button
+            key={slide.image}
+            type="button"
+            onClick={() => goTo(index)}
+            aria-label={`Go to slide ${index + 1}`}
+            aria-current={index === activeIndex}
+            className={`h-[8px] cursor-pointer rounded-full transition-all duration-300 ${
+              index === activeIndex
+                ? "w-[26px] bg-white"
+                : "w-[8px] bg-white/50 hover:bg-white/80"
+            }`}
+          />
+        ))}
       </div>
     </header>
   );
