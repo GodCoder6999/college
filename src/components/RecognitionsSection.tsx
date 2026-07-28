@@ -1,19 +1,22 @@
 import type { Recognition } from "@/types/site";
 
+// Mission and Vision, summarised from the institute's own About page.
 const RECOGNITIONS: Recognition[] = [
   {
     logo: "/images/highlights/programme.svg",
-    title: "Diploma in Pharmacy (D.Pharm)",
-    subtitle: "Two-year professional programme",
-    ctaLabel: "View Course",
-    ctaHref: "https://muktirshikshacollegeofeducationandpharmacy.org/course/",
+    title: "Our Mission",
+    subtitle:
+      "High-quality pharmacy education combining strong theoretical knowledge with practical, hands-on training — nurturing skilled and responsible professionals for the healthcare and pharmaceutical industries.",
+    ctaLabel: "Read More",
+    ctaHref: "/about_institution",
   },
   {
     logo: "/images/highlights/admission.svg",
-    title: "Admission Open",
-    subtitle: "Begin your pharmacy career here",
-    ctaLabel: "Apply Now",
-    ctaHref: "https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/",
+    title: "Our Vission",
+    subtitle:
+      "To be recognised as a leading institute in pharmacy education, shaping competent and compassionate healthcare professionals, and fostering innovation, research and continuous learning.",
+    ctaLabel: "Read More",
+    ctaHref: "/about_institution",
   },
 ];
 
@@ -23,10 +26,10 @@ export function RecognitionsSection() {
       <div className="msc-container">
         <div className="mb-[5px] text-center">
           <span className="text-[11px] font-bold tracking-[3px] text-[#f59e0b] uppercase">
-            Our Programme
+            Mission &amp; Vision
           </span>
           <h2 className="mt-[8px] text-[28px] font-bold text-[#0f1d3d]">
-            Programme Highlights
+            What We Stand For
           </h2>
           <div className="mx-auto mt-[12px] h-[3px] w-[44px] rounded-[2px] bg-[linear-gradient(90deg,#1e40af,#f59e0b)]" />
         </div>
@@ -65,7 +68,7 @@ export function RecognitionsSection() {
 
         <div className="mt-[1rem] text-center">
           <a
-            href="https://muktirshikshacollegeofeducationandpharmacy.org/course/"
+            href="/d_pharma"
             className="group relative inline-flex items-center gap-[8px] overflow-hidden rounded-[50px] px-[28px] py-[11px] text-[13px] font-bold text-white shadow-[0_4px_16px_rgba(30,64,175,0.22)]"
           >
             <span className="absolute inset-0 bg-[linear-gradient(135deg,#0f1d3d,#1e40af)] transition-opacity duration-200 group-hover:opacity-0" />

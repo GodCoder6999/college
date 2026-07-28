@@ -12,7 +12,7 @@ export function MainHeader() {
         <div className="flex items-center">
           <div className="w-[58.333%] max-[991px]:w-[66.667%] max-[767px]:w-[75%]">
             <a
-              href="https://muktirshikshacollegeofeducationandpharmacy.org/"
+              href="/"
               className="flex items-center gap-[14px]"
             >
               <div className="flex items-center gap-[14px]">
@@ -49,14 +49,14 @@ export function MainHeader() {
               </div>
               <div className="flex gap-[8px] max-[991px]:hidden">
                 <a
-                  href="https://muktirshikshacollegeofeducationandpharmacy.org/course/"
+                  href="/d_pharma"
                   className="inline-flex items-center gap-[6px] rounded-[8px] border-[1.5px] border-[#f59e0b] bg-transparent px-[16px] py-[7px] text-[12px] font-bold text-[#f59e0b] transition-all duration-200 hover:bg-[#f59e0b] hover:text-[#0f1d3d]"
                 >
                   <i className="fas fa-book-open" />
                   Course
                 </a>
                 <a
-                  href="https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/"
+                  href="/contact_us"
                   className="inline-flex items-center gap-[6px] rounded-[8px] bg-[#f59e0b] px-[18px] py-[7px] text-[12px] font-bold text-[#0f1d3d] transition-opacity duration-200 hover:opacity-[0.88]"
                 >
                   <i className="fas fa-phone-alt" />

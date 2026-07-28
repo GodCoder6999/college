@@ -1,10 +1,14 @@
-import type { StatItem } from "@/types/site";
-
-const STATS: StatItem[] = [
-  { icon: "/images/stats/course.svg", value: "D.Pharm", label: "Programme Offered" },
-  { icon: "/images/stats/duration.svg", value: "2", label: "Years Duration" },
-  { icon: "/images/stats/training.svg", value: "100%", label: "Practical Training" },
-  { icon: "/images/stats/guidance.svg", value: "24/7", label: "Expert Guidance" },
+// Values come from the institute's own copy. Deliberately no invented figures
+// (seat counts, placement rates, years running) until the client supplies them.
+//
+// Icons are Font Awesome glyphs rather than generated artwork: real vector
+// icons stay crisp at any size and match the weight of every other icon on
+// the page.
+const STATS = [
+  { icon: "fas fa-pills", value: "D.Pharm", label: "Programme Offered" },
+  { icon: "fas fa-award", value: "Quality", label: "Pharmacy Education" },
+  { icon: "fas fa-flask", value: "Hands-on", label: "Practical Training" },
+  { icon: "fas fa-chalkboard-teacher", value: "Expert", label: "Faculty Guidance" },
 ];
 
 export function StatsStrip() {
@@ -17,13 +21,12 @@ export function StatsStrip() {
               key={stat.label}
               className="w-1/2 min-[992px]:w-1/4 text-center"
             >
-              <img
-                src={stat.icon}
-                alt={stat.label}
-                width={80}
-                height={80}
-                className="mx-auto w-[80px] h-[80px]"
-              />
+              <div className="mx-auto flex h-[80px] w-[80px] items-center justify-center">
+                <i
+                  className={`${stat.icon} text-[44px] text-[#444444]`}
+                  aria-hidden="true"
+                />
+              </div>
               <h2 className="text-[35px] leading-[56px] font-bold text-[#444444]">
                 {stat.value}
               </h2>

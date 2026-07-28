@@ -152,7 +152,7 @@ export function TopNav() {
       <div className="msc-nav-container mx-auto flex w-full max-w-[1320px] flex-wrap items-center px-[20px]">
         {/* Mobile brand */}
         <a
-          href="https://muktirshikshacollegeofeducationandpharmacy.org/"
+          href="/"
           className="msc-mnav-brand hidden items-center gap-[10px] max-[991px]:flex min-[992px]:hidden"
         >
           <img

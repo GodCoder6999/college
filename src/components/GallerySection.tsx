@@ -8,22 +8,22 @@ const GALLERY_TILES: GalleryTile[] = [
   {
     image: "/images/gallery/classroom.jpg",
     title: "Classroom",
-    href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/",
+    href: "/about_institution",
   },
   {
     image: "/images/gallery/laboratory.jpg",
     title: "Laboratory",
-    href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/",
+    href: "/about_institution",
   },
   {
     image: "/images/gallery/library.jpg",
     title: "Library",
-    href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/",
+    href: "/about_institution",
   },
   {
     image: "/images/gallery/campus-life.jpg",
     title: "Campus Life",
-    href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/",
+    href: "/about_institution",
   },
 ];
 
@@ -48,7 +48,7 @@ export function GallerySection() {
           </div>
           <div className="flex w-full items-center justify-start min-[992px]:w-[58.333%] min-[992px]:justify-end">
             <a
-              href="https://muktirshikshacollegeofeducationandpharmacy.org/about-us/"
+              href="/about_institution"
               className="inline-flex items-center gap-[8px] rounded-[8px] bg-[#0f1d3d] px-[22px] py-[10px] text-[13px] font-bold tracking-[0.5px] text-[#f59e0b] transition-colors duration-200 hover:bg-[#1e40af]"
             >
               View Our Campus

@@ -1,28 +1,30 @@
 import type { FooterLink } from "@/types/site";
 
 const USEFUL_LINKS_1: FooterLink[] = [
-  { label: "Home", href: "https://muktirshikshacollegeofeducationandpharmacy.org/" },
-  { label: "Course", href: "https://muktirshikshacollegeofeducationandpharmacy.org/course/" },
-  { label: "About Us", href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/" },
-  { label: "Our Mission", href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/" },
-  { label: "Our Vission", href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/" },
-  { label: "Key Strengths", href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/" },
+  { label: "About Institution", href: "/about_institution" },
+  { label: "Mission & Vision", href: "/mission_and_vision" },
+  { label: "Diploma in Pharmacy", href: "/d_pharma" },
+  { label: "Admission", href: "/apply" },
+  { label: "Eligibility", href: "/eligibility" },
+  { label: "Fee Structure", href: "/fee_structure" },
 ];
 
 const USEFUL_LINKS_2: FooterLink[] = [
-  { label: "Diploma in Pharmacy", href: "https://muktirshikshacollegeofeducationandpharmacy.org/course/" },
-  { label: "Admission", href: "https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/" },
-  { label: "Contact Us", href: "https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/" },
-  { label: "Querry", href: "https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/" },
-  { label: "Campus", href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/" },
-  { label: "Call Us", href: "tel:+919830236143" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact Us", href: "/contact_us" },
+  { label: "Latest News", href: "/news" },
+  { label: "Career", href: "/recruitment" },
+  { label: "Events", href: "/event" },
+  { label: "Anti Ragging", href: "/anti_ragging" },
+  { label: "Scholarship", href: "/scholarship" },
 ];
 
 const BOTTOM_LINKS: FooterLink[] = [
-  { label: "Home", href: "https://muktirshikshacollegeofeducationandpharmacy.org/" },
-  { label: "Course", href: "https://muktirshikshacollegeofeducationandpharmacy.org/course/" },
-  { label: "About Us", href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/" },
-  { label: "Contact Us", href: "https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/" },
+  { label: "About", href: "/about_institution" },
+  { label: "Contact", href: "/contact_us" },
+  { label: "Affiliation", href: "/affilation" },
+  { label: "Terms of Use", href: "/terms" },
+  { label: "Privacy Policy", href: "/privacy" },
 ];
 
 const BADGES = ["D.Pharm Programme", "Hands-on Training", "Expert Guidance"];
@@ -116,7 +118,7 @@ export function SiteFooter() {
             </div>
           </div>
           <a
-            href="https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/"
+            href="/contact_us"
             className="inline-flex items-center gap-[8px] rounded-[9px] bg-[#0f1d3d] px-[24px] py-[10px] text-[13px] font-bold text-[#f59e0b] transition-transform duration-200 hover:-translate-y-[2px] max-[575px]:w-full max-[575px]:justify-center"
           >
             Apply Now for Admission
@@ -132,7 +134,7 @@ export function SiteFooter() {
           {/* Column A — About */}
           <div className="w-full px-[15px] min-[992px]:w-[33.333%] min-[768px]:w-1/2">
             <a
-              href="https://muktirshikshacollegeofeducationandpharmacy.org/"
+              href="/"
               className="mb-[16px] flex items-center gap-[12px]"
             >
               <img

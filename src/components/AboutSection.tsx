@@ -1,3 +1,10 @@
+/** "Our Key Strengths", verbatim from the institute's homepage. */
+const KEY_STRENGTHS = [
+  "Quality pharmacy education aligned with industry standards",
+  "Experienced and dedicated faculty members",
+  "Career-oriented training and professional guidance",
+];
+
 export function AboutSection() {
   return (
     <section className="msc-section-padding overflow-x-clip max-[575px]:py-[32px]">
@@ -20,8 +27,22 @@ export function AboutSection() {
               we provide quality education that meets industry standards and
               healthcare needs.
             </p>
+
+            {/* Their own "Our Key Strengths" list, from the institute homepage */}
+            <ul className="mt-[22px] list-none p-0">
+              {KEY_STRENGTHS.map((strength) => (
+                <li
+                  key={strength}
+                  className="mb-[10px] flex items-start gap-[10px] text-[14px] leading-[26px] text-[#8e8e99]"
+                >
+                  <i className="fas fa-check-circle mt-[6px] shrink-0 text-[13px] text-[#f59e0b]" />
+                  <span>{strength}</span>
+                </li>
+              ))}
+            </ul>
+
             <a
-              href="https://muktirshikshacollegeofeducationandpharmacy.org/about-us/"
+              href="/about_institution"
               className="group relative mt-[30px] mb-0 inline-block min-h-[55px] overflow-hidden rounded-[30px] border-[0.8px] border-[#f94c30] bg-[#f94c30] px-[30px] text-center leading-[55px] text-white transition-[0.4s]"
             >
               <span className="flex items-center justify-center gap-2">

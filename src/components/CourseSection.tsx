@@ -93,14 +93,14 @@ export function CourseSection() {
 
             <div className="flex flex-wrap items-center gap-[12px]">
               <a
-                href="https://muktirshikshacollegeofeducationandpharmacy.org/course/"
+                href="/d_pharma"
                 className="inline-flex items-center gap-[8px] rounded-[30px] border-2 border-[#1e40af] px-[26px] py-[11px] text-[14px] font-semibold text-[#1e40af] transition-all duration-[250ms] hover:bg-[#1e40af] hover:text-white"
               >
                 Read More
                 <i className="fas fa-arrow-right" />
               </a>
               <a
-                href="https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/"
+                href="/contact_us"
                 className="inline-flex items-center gap-[8px] rounded-[30px] bg-[#f59e0b] px-[26px] py-[11px] text-[14px] font-bold text-[#0f1d3d] transition-all duration-[250ms] hover:bg-[#d97706]"
               >
                 Apply Now for Admission

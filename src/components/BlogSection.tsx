@@ -1,32 +1,35 @@
 import type { BlogPost } from "@/types/site";
 
+// Drawn from the institute's own "Reasons to Pursue a Diploma in Pharmacy"
+// list on the course page. No publication dates: these are standing points
+// from their site, not dated articles.
 const BLOG_POSTS: BlogPost[] = [
   {
     image: "/images/blog/why-dpharm.jpg",
     tag: "Course",
-    date: "12 Jan 2026",
-    title: "Reasons to Pursue a Diploma in Pharmacy",
+    date: "",
+    title: "A Strong Foundation in Pharmaceutical Sciences",
     excerpt:
-      "A D.Pharm builds a strong foundation in pharmaceutical sciences and healthcare practices, and prepares students for a vital role in patient care and safe medication dispensing.",
-    href: "https://muktirshikshacollegeofeducationandpharmacy.org/course/",
+      "Builds a strong foundation in pharmaceutical sciences and healthcare practices, and prepares students for a vital role in patient care and safe medication dispensing.",
+    href: "/d_pharma",
   },
   {
     image: "/images/blog/lab-skills.jpg",
-    tag: "Learning",
-    date: "05 Jan 2026",
-    title: "Practical Training That Prepares You for Real Work",
+    tag: "Training",
+    date: "",
+    title: "Practical, Industry-Oriented Training",
     excerpt:
-      "Our course pairs theory with hands-on laboratory training, so graduates can work confidently in pharmacies, hospitals and other healthcare institutions from day one.",
-    href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/",
+      "Offers practical, industry-oriented training with real-world exposure, developing professional skills such as accuracy, ethics, and responsibility.",
+    href: "/d_pharma",
   },
   {
     image: "/images/blog/admission-guide.jpg",
-    tag: "Admission",
-    date: "02 Jan 2026",
-    title: "How to Apply for the Diploma in Pharmacy",
+    tag: "Careers",
+    date: "",
+    title: "Career Opportunities in Healthcare",
     excerpt:
-      "Admissions are open for the Diploma in Pharmacy programme. Reach out to our team for guidance on the application process, course details, or any other enquiry.",
-    href: "https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/",
+      "Creates career opportunities in hospitals, clinics, community pharmacies, and pharmaceutical companies, and acts as a stepping stone for higher education in pharmacy.",
+    href: "/d_pharma",
   },
 ];
 
@@ -36,10 +39,10 @@ export function BlogSection() {
       <div className="msc-container">
         <div className="mb-[48px] text-center">
           <h6 className="mb-[10px] text-[13px] leading-[19.5px] font-semibold tracking-[4px] text-[#181b31] uppercase opacity-80">
-            From Our Institute
+            Why Study Here
           </h6>
           <h4 className="text-[40px] leading-[64px] font-bold text-[#181b31] max-[575px]:text-[25px]">
-            Latest Updates
+            Reasons to Pursue a Diploma in Pharmacy
           </h4>
         </div>
 
@@ -64,11 +67,13 @@ export function BlogSection() {
                   </a>
                 </div>
                 <div className="px-[30px] py-[40px]">
-                  <div className="mb-[15px] leading-[16.5px] opacity-70">
-                    <span className="text-[11px] leading-[16.5px] font-normal text-[#181b31] uppercase">
-                      {post.date}
-                    </span>
-                  </div>
+                  {post.date ? (
+                    <div className="mb-[15px] leading-[16.5px] opacity-70">
+                      <span className="text-[11px] leading-[16.5px] font-normal text-[#181b31] uppercase">
+                        {post.date}
+                      </span>
+                    </div>
+                  ) : null}
                   <h5 className="line-clamp-2">
                     <a
                       href={post.href}
@@ -95,7 +100,7 @@ export function BlogSection() {
 
         <div className="mt-[40px] text-center">
           <a
-            href="https://muktirshikshacollegeofeducationandpharmacy.org/course/"
+            href="/d_pharma"
             className="group relative inline-flex items-center gap-[10px] overflow-hidden rounded-[50px] px-[36px] py-[14px] text-[15px] font-bold tracking-[0.5px] text-white shadow-[0_6px_24px_rgba(30,64,175,0.28)] transition-all duration-[250ms] hover:shadow-[0_8px_30px_rgba(245,158,11,0.3)]"
           >
             <span

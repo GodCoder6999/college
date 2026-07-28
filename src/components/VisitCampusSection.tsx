@@ -29,7 +29,7 @@ export function VisitCampusSection() {
           </div>
 
           <a
-            href="https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/"
+            href="/contact_us"
             className="inline-flex w-fit items-center gap-[8px] rounded-[8px] bg-[#f59e0b] px-[26px] py-[12px] text-[13px] font-bold text-[#0f1d3d]"
           >
             <i className="fas fa-map-marker-alt" />

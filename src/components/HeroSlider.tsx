@@ -11,8 +11,8 @@ const SLIDES: HeroSlide[] = [
     description:
       "Our students gain the knowledge, skills, and confidence to excel in pharmacy and healthcare. We combine quality education, hands-on training, and expert guidance for a rewarding career.",
     buttons: [
-      { label: "Apply Now", href: "https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/", variant: "primary" },
-      { label: "Know More", href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/", variant: "outline" },
+      { label: "Apply Now", href: "/contact_us", variant: "primary" },
+      { label: "Know More", href: "/about_institution", variant: "outline" },
     ],
   },
   {
@@ -22,8 +22,8 @@ const SLIDES: HeroSlide[] = [
     description:
       "A comprehensive programme covering pharmaceutical sciences, drug formulation, dispensing, and patient care — preparing you for pharmacies, hospitals, and healthcare settings.",
     buttons: [
-      { label: "Explore Course", href: "https://muktirshikshacollegeofeducationandpharmacy.org/course/", variant: "primary" },
-      { label: "Contact Us", href: "https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/", variant: "outline" },
+      { label: "Explore Course", href: "/d_pharma", variant: "primary" },
+      { label: "Contact Us", href: "/contact_us", variant: "outline" },
     ],
   },
   {
@@ -33,8 +33,8 @@ const SLIDES: HeroSlide[] = [
     description:
       "Muktir Siksha College Of Education & Pharmacy, Gobardanga — experienced faculty, modern laboratories, and a student-centred learning environment.",
     buttons: [
-      { label: "Admission", href: "https://muktirshikshacollegeofeducationandpharmacy.org/contact-us/", variant: "primary" },
-      { label: "About Us", href: "https://muktirshikshacollegeofeducationandpharmacy.org/about-us/", variant: "outline" },
+      { label: "Admission", href: "/contact_us", variant: "primary" },
+      { label: "About Us", href: "/about_institution", variant: "outline" },
     ],
   },
   {
