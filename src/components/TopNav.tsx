@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { NAV_DATA, APPLY_NOW_HREF } from "@/lib/nav-data";
@@ -151,7 +153,7 @@ export function TopNav() {
     >
       <div className="msc-nav-container mx-auto flex w-full max-w-[1320px] flex-wrap items-center px-[20px]">
         {/* Mobile brand */}
-        <a
+        <Link
           href="/"
           className="msc-mnav-brand hidden items-center gap-[10px] max-[991px]:flex min-[992px]:hidden"
         >
@@ -170,7 +172,7 @@ export function TopNav() {
               of Education &amp; Pharmacy
             </small>
           </span>
-        </a>
+        </Link>
 
         {/* Mobile toggler */}
         <button

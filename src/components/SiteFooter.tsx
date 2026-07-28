@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { FooterLink } from "@/types/site";
 
 const USEFUL_LINKS_1: FooterLink[] = [
@@ -133,7 +135,7 @@ export function SiteFooter() {
         <div className="mt-[-24px] flex flex-wrap gap-y-[1.5rem]">
           {/* Column A — About */}
           <div className="w-full px-[15px] min-[992px]:w-[33.333%] min-[768px]:w-1/2">
-            <a
+            <Link
               href="/"
               className="mb-[16px] flex items-center gap-[12px]"
             >
@@ -152,7 +154,7 @@ export function SiteFooter() {
                   Excellence in Pharmacy Education
                 </div>
               </div>
-            </a>
+            </Link>
             <p className="mb-[20px] text-[13px] leading-[1.8] text-[rgba(255,255,255,0.55)]">
               A premier institute dedicated to excellence in pharmacy
               education, shaping skilled and ethical healthcare professionals.

@@ -1,3 +1,8 @@
+import type {
+  ContactDetail,
+  FaqGroup,
+  GalleryItem,
+} from "@/components/page/Blocks";
 import type { CardItem } from "@/components/page/PageShell";
 
 /**
@@ -12,7 +17,10 @@ export type Block =
   | { kind: "prose"; label?: string; heading?: string; paragraphs: string[] }
   | { kind: "bullets"; label?: string; heading?: string; items: string[] }
   | { kind: "cards"; label?: string; heading?: string; columns?: 2 | 3 | 4; items: CardItem[] }
-  | { kind: "pending"; label?: string; heading?: string; needs: string[] };
+  | { kind: "pending"; label?: string; heading?: string; needs: string[] }
+  | { kind: "faq"; label?: string; heading?: string; intro?: string; groups: FaqGroup[] }
+  | { kind: "contact"; label?: string; heading?: string; intro?: string; details: ContactDetail[] }
+  | { kind: "gallery"; label?: string; heading?: string; intro?: string; items: GalleryItem[] };
 
 export interface SitePage {
   slug: string;
@@ -323,10 +331,34 @@ export const SITE_PAGES: SitePage[] = [
   ]),
 
   // ---------- Gallery / News ----------
-  pending("gallery", "Gallery", "Gallery", [
-    "Photographs of the campus, classrooms, laboratories and events",
-    "A short caption for each photograph",
-  ]),
+  {
+    slug: "gallery",
+    title: "Gallery",
+    parent: "Gallery",
+    blocks: [
+      {
+        kind: "gallery",
+        label: "Showcases",
+        heading: "A Campus That Inspires Learning",
+        items: [
+          { image: "/images/gallery/classroom.jpg", title: "Classroom" },
+          { image: "/images/gallery/laboratory.jpg", title: "Laboratory" },
+          { image: "/images/gallery/library.jpg", title: "Library" },
+          { image: "/images/gallery/campus-life.jpg", title: "Campus Life" },
+          { image: "/images/blog/lab-skills.jpg", title: "Practical Training" },
+          { image: "/images/blog/why-dpharm.jpg", title: "Pharmacy Practice" },
+        ],
+      },
+      {
+        kind: "pending",
+        heading: "More Photographs",
+        needs: [
+          "Photographs of the actual campus, classrooms and laboratories",
+          "A short caption for each photograph",
+        ],
+      },
+    ],
+  },
   pending("news", "News & Notices", "News & Events", [
     "Notices and announcements with dates",
   ]),
@@ -342,24 +374,104 @@ export const SITE_PAGES: SitePage[] = [
     slug: "contact_us",
     title: "Contact Us",
     blocks: [
-      { kind: "prose", label: "Get in Touch", heading: "We Are Here to Help", paragraphs: [
-        "Have questions or need more information? Reach out to us for admissions guidance, course details, or any other inquiries, and our team will assist you promptly.",
-      ] },
       {
-        kind: "cards",
-        heading: "Contact Details",
-        columns: 3,
-        items: [
-          { icon: "fas fa-map-marker-alt", tone: "navy", title: "Address", body: "Jogen Mondal Colony, Vill.- Kuchlia, P. O.- Gobardanga, P. S.- Gobardanga, Dist- North 24 Parganas, Pin- 743252, West Bengal" },
-          { icon: "fas fa-phone-alt", tone: "gold", title: "Contact No.", body: "(+91) 9830 236143 / (+91) 8172 078807" },
-          { icon: "fas fa-envelope", tone: "blue", title: "E-Mail", body: "muktirshikshacollegeofpharnacy@gmail.com" },
+        kind: "prose",
+        label: "Get in Touch",
+        heading: "We Are Here to Help",
+        paragraphs: [
+          "Have questions or need more information? Reach out to us for admissions guidance, course details, or any other inquiries, and our team will assist you promptly.",
+        ],
+      },
+      {
+        kind: "contact",
+        label: "Contact",
+        heading: "Send Us a Message",
+        details: [
+          {
+            icon: "fas fa-map-marker-alt",
+            label: "Address",
+            lines: [
+              "Jogen Mondal Colony, Vill.- Kuchlia,",
+              "P. O.- Gobardanga, P. S.- Gobardanga,",
+              "Dist- North 24 Parganas, Pin- 743252, West Bengal",
+            ],
+          },
+          {
+            icon: "fas fa-phone-alt",
+            label: "Contact No.",
+            lines: ["(+91) 9830 236143", "(+91) 8172 078807"],
+          },
+          {
+            icon: "fas fa-envelope",
+            label: "E-Mail",
+            lines: ["muktirshikshacollegeofpharnacy@gmail.com"],
+          },
         ],
       },
     ],
   },
-  pending("faq", "FAQ", "FAQ", [
-    "Frequently asked questions and their answers",
-  ]),
+  {
+    slug: "faq",
+    title: "FAQ",
+    blocks: [
+      {
+        kind: "faq",
+        label: "Questions",
+        heading: "Frequently Asked Questions",
+        groups: [
+          {
+            group: "Course",
+            items: [
+              {
+                q: "Which course does the institute offer?",
+                a: "We offer the Diploma in Pharmacy (D.Pharm), a professional programme giving students a solid foundation in pharmaceutical sciences.",
+              },
+              {
+                q: "What does the D.Pharm programme cover?",
+                a: "It covers essential topics such as drug formulation, dispensing, and patient care, combining theoretical knowledge with practical training for real-world healthcare settings.",
+              },
+              {
+                q: "Where can the diploma take me?",
+                a: "It creates career opportunities in hospitals, clinics, community pharmacies, and pharmaceutical companies, and acts as a stepping stone for higher education in pharmacy.",
+              },
+            ],
+          },
+          {
+            group: "Teaching",
+            items: [
+              {
+                q: "Is the training practical or only theoretical?",
+                a: "Both. The course pairs strong theoretical knowledge with practical, hands-on training, so graduates can work confidently in pharmacies, hospitals and other healthcare institutions.",
+              },
+              {
+                q: "What support do students get?",
+                a: "Our institute combines experienced faculty, modern laboratories, and a student-centered learning environment so every learner can grow academically and professionally.",
+              },
+            ],
+          },
+          {
+            group: "Admission",
+            items: [
+              {
+                q: "How do I apply?",
+                a: "Contact our team on (+91) 9830 236143 or (+91) 8172 078807, or email muktirshikshacollegeofpharnacy@gmail.com, and we will guide you through the process.",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        kind: "pending",
+        heading: "More Answers",
+        needs: [
+          "Eligibility criteria and required marks",
+          "Fee structure and payment schedule",
+          "Number of seats and admission deadline",
+          "Hostel availability and charges",
+        ],
+      },
+    ],
+  },
   pending("recruitment", "Career With Us", "Useful Links", [
     "Open positions, qualifications required and how to apply",
   ]),

@@ -1,4 +1,9 @@
 import {
+  Accordion,
+  ContactBlock,
+  GalleryGrid,
+} from "@/components/page/Blocks";
+import {
   BulletList,
   CardGrid,
   PageSection,
@@ -63,6 +68,24 @@ export function RenderPage({ slug }: { slug: string }) {
                 center
               >
                 <CardGrid items={block.items} columns={block.columns} />
+              </PageSection>
+            );
+          case "faq":
+            return (
+              <PageSection key={i} tone={tone} label={block.label} heading={block.heading} center>
+                <Accordion groups={block.groups} />
+              </PageSection>
+            );
+          case "contact":
+            return (
+              <PageSection key={i} tone={tone} label={block.label} heading={block.heading} center>
+                <ContactBlock details={block.details} />
+              </PageSection>
+            );
+          case "gallery":
+            return (
+              <PageSection key={i} tone={tone} label={block.label} heading={block.heading} center>
+                <GalleryGrid items={block.items} />
               </PageSection>
             );
           case "pending":

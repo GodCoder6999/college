@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const SOCIAL_LINKS = [
   { href: "https://www.facebook.com/", icon: "fab fa-facebook-f" },
   { href: "https://twitter.com/", icon: "fab fa-twitter" },
@@ -11,7 +13,7 @@ export function MainHeader() {
       <div className="mx-auto w-full max-w-[1320px] px-[12px]">
         <div className="flex items-center">
           <div className="w-[58.333%] max-[991px]:w-[66.667%] max-[767px]:w-[75%]">
-            <a
+            <Link
               href="/"
               className="flex items-center gap-[14px]"
             >
@@ -22,15 +24,15 @@ export function MainHeader() {
                   className="h-[54px] w-[54px] max-[991px]:h-[44px] max-[991px]:w-[44px] object-contain [filter:drop-shadow(0_2px_8px_rgba(0,0,0,0.3))]"
                 />
                 <div>
-                  <h1 className="m-0 text-[18px] max-[991px]:text-[14px] font-extrabold leading-[1.25] text-white">
+                  <div className="m-0 text-[18px] max-[991px]:text-[14px] font-extrabold leading-[1.25] text-white">
                     Muktir Siksha College Of Education &amp; Pharmacy
-                  </h1>
+                  </div>
                   <p className="mt-[4px] mb-0 text-[11px] tracking-[0.3px] text-[#93c5fd]">
                     Diploma in Pharmacy (D.Pharm) • Gobardanga, North 24 Parganas, WB
                   </p>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
           <div className="w-[41.667%] max-[991px]:w-[33.333%] max-[767px]:w-[25%] flex flex-col items-end gap-[9px]">
             <div className="flex items-center gap-[16px]">
